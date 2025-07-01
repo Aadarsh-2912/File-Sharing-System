@@ -1,7 +1,7 @@
 # File Sharing System API
 
 ## Overview
-A FastAPI-based file sharing system with user authentication, email verification, and file upload/download features. Supports two user roles: `ops` (operations) and `client`.
+A FastAPI-based file sharing system with user authentication, email verification, and file upload/download features from AWS S3 database. Supports two user roles: `ops` (operations) and `client`.
 
 ---
 
