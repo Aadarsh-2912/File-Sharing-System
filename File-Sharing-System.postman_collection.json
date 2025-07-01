@@ -1,0 +1,154 @@
+{
+  "info": {
+    "_postman_id": "fss-collection-001",
+    "name": "File Sharing System API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Sign Up (ops)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"ops@example.com\",\n  \"password\": \"yourpassword\",\n  \"role\": \"ops\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/signup",
+          "host": ["{{base_url}}"],
+          "path": ["auth", "signup"]
+        }
+      }
+    },
+    {
+      "name": "Sign Up (client)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"aadarshanand2912@gmail.com\",\n  \"password\": \"yourpassword\",\n  \"role\": \"client\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/signup",
+          "host": ["{{base_url}}"],
+          "path": ["auth", "signup"]
+        }
+      }
+    },
+    {
+      "name": "Login (ops)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"ops@example.com\",\n  \"password\": \"yourpassword\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/login",
+          "host": ["{{base_url}}"],
+          "path": ["auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "Login (client)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"aadarshanand2912@gmail.com\",\n  \"password\": \"yourpassword\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/login",
+          "host": ["{{base_url}}"],
+          "path": ["auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "Verify Email",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/auth/verify-email?token={{verification_token}}",
+          "host": ["{{base_url}}"],
+          "path": ["auth", "verify-email"],
+          "query": [
+            { "key": "token", "value": "{{verification_token}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Upload File (ops)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{ops_access_token}}" }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "uploaded_file",
+              "type": "file",
+              "src": ""
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/files/upload",
+          "host": ["{{base_url}}"],
+          "path": ["files", "upload"]
+        }
+      }
+    },
+    {
+      "name": "List Files (client)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{client_access_token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/files/list",
+          "host": ["{{base_url}}"],
+          "path": ["files", "list"]
+        }
+      }
+    },
+    {
+      "name": "Download File (client)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{client_access_token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/files/download/{{file_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["files", "download", "{{file_id}}"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "base_url", "value": "https://file-sharing-system-gvyz.onrender.com" },
+    { "key": "ops_access_token", "value": "" },
+    { "key": "client_access_token", "value": "" },
+    { "key": "verification_token", "value": "" },
+    { "key": "file_id", "value": "" }
+  ]
+} 
