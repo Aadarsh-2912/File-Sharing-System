@@ -33,7 +33,7 @@ AWS_S3_BUCKET_NAME=your-bucket-name
 AWS_S3_REGION=your-region
 
 # (Optional) Base URL for email verification links
-BASE_URL=http://127.0.0.1:8000
+BASE_URL=https://file-sharing-system-gvyz.onrender.com
 ```
 
 ---
@@ -43,7 +43,7 @@ Start the FastAPI server with:
 ```bash
 uvicorn app.main:app --reload
 ```
-The API will be available at [http://127.0.0.1:8000](http://127.0.0.1:8000)
+The API will be available at [https://file-sharing-system-gvyz.onrender.com](https://file-sharing-system-gvyz.onrender.com)
 
 ---
 
@@ -130,7 +130,7 @@ The API will be available at [http://127.0.0.1:8000](http://127.0.0.1:8000)
 1. **Start the server** (`uvicorn app.main:app --reload`).
 2. **Import Endpoints:**
    - Use the above endpoint details to create requests in Postman.
-   - Set the base URL to `http://127.0.0.1:8000`.
+   - Set the base URL to `https://file-sharing-system-gvyz.onrender.com`.
 
 3. **Workflow Example:**
    1. **Sign Up** two users: one with `role: ops`, one with `role: client`.
@@ -162,7 +162,7 @@ The API will be available at [http://127.0.0.1:8000](http://127.0.0.1:8000)
 ---
 
 ## FastAPI Docs
-Interactive API docs are available at [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+Interactive API docs are available at [https://file-sharing-system-gvyz.onrender.com/docs](https://file-sharing-system-gvyz.onrender.com/docs)
 
 ---
 
