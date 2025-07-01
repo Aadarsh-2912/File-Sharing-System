@@ -44,6 +44,8 @@ The API will be available at [https://file-sharing-system-gvyz.onrender.com](htt
 
 ## API Endpoints
 
+> **Tip:** To quickly test all API endpoints, import the provided `File-Sharing-System.postman_collection.json` Postman dump into Postman. This collection contains ready-to-use requests for all major endpoints.
+
 ### 1. **Root**
 - **GET /**
   - Returns: `{ "message": "File Sharing System API is running" }`
@@ -83,7 +85,7 @@ The API will be available at [https://file-sharing-system-gvyz.onrender.com](htt
 - **Response:** `{ "message": "Email verified successfully" }`
 - **Instructions:**
   - After signing up as a client, check your email inbox for a verification email. Click the link in the email or copy it into your browser to verify your account.
-
+  - **Note:** The verification email may take a few minutes to arrive due to the use of a free email API (SendGrid).
 ---
 
 ### 3. **File Operations** (`/files`)
@@ -150,6 +152,7 @@ The API will be available at [https://file-sharing-system-gvyz.onrender.com](htt
   - `client` users can list and download files (after email verification).
 - **Email:**
   - Email verification links are now sent to the user's email inbox. You must verify your email before logging in as a client user.
+  - **Note:** The verification email may take a few minutes to arrive due to the use of a free email API (SendGrid).
 - **S3:**
   - Ensure your AWS credentials and bucket are set up for file upload/download.
 - **Database:**
