@@ -10,3 +10,4 @@ cryptography
 boto3
 email-validator 
 python-dotenv
+sendgrid

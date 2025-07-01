@@ -27,6 +27,8 @@ AWS_SECRET_ACCESS_KEY=your-secret-access-key
 AWS_S3_BUCKET_NAME=your-bucket-name
 AWS_S3_REGION=your-region
 BASE_URL=https://file-sharing-system-gvyz.onrender.com
+SENDGRID_API_KEY=your-sendgrid-api-key
+FROM_EMAIL=your-verified-sender@example.com
 ```
 
 ---
@@ -60,7 +62,7 @@ The API will be available at [https://file-sharing-system-gvyz.onrender.com](htt
   ```
 - **Response:** User info (see schemas)
 - **Notes:**
-  - If `role` is `client`, a verification email is simulated (see console output).
+  - If `role` is `client`, a verification email is sent to the provided email address from "anandaadarsh331@gmail.com". You must verify your email before logging in.
 
 #### b. **Login**
 - **POST /auth/login**
@@ -77,8 +79,10 @@ The API will be available at [https://file-sharing-system-gvyz.onrender.com](htt
 
 #### c. **Verify Email**
 - **GET /auth/verify-email?token=...**
-- **Query Param:** `token` (from the verification email/console)
+- **Query Param:** `token` (from the verification email)
 - **Response:** `{ "message": "Email verified successfully" }`
+- **Instructions:**
+  - After signing up as a client, check your email inbox for a verification email. Click the link in the email or copy it into your browser to verify your account.
 
 ---
 
@@ -128,8 +132,7 @@ The API will be available at [https://file-sharing-system-gvyz.onrender.com](htt
 3. **Workflow Example:**
    1. **Sign Up** two users: one with `role: ops`, one with `role: client`.
    2. **Verify** the client user:
-      - Copy the verification link from the server console output.
-      - Paste it in your browser or use a GET request in Postman.
+      - Check your email inbox for the verification email and follow the link to verify your account.
    3. **Login** both users to get their `access_token`.
    4. **Upload** a file as the `ops` user (POST `/files/upload`, add file in form-data, set Authorization header).
    5. **List files** as the `client` user (GET `/files/list`, set Authorization header).
@@ -146,7 +149,7 @@ The API will be available at [https://file-sharing-system-gvyz.onrender.com](htt
   - `ops` users can upload files.
   - `client` users can list and download files (after email verification).
 - **Email:**
-  - Email sending is simulated; check your server console for verification links.
+  - Email verification links are now sent to the user's email inbox. You must verify your email before logging in as a client user.
 - **S3:**
   - Ensure your AWS credentials and bucket are set up for file upload/download.
 - **Database:**
