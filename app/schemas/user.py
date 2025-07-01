@@ -1,7 +1,7 @@
 from pydantic import BaseModel, EmailStr
-from enum import Enum
+import enum
 
-class UserRole(str, Enum):
+class UserRole(str, enum.Enum):
     ops = "ops"
     client = "client"
 
@@ -21,4 +21,4 @@ class UserOut(BaseModel):
     is_verified: bool
 
     class Config:
-        orm_mode = True 
+        from_attributes = True 

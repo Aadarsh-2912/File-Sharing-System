@@ -32,14 +32,12 @@ def signup(user: UserCreate, request: Request, db: Session = Depends(get_db)):
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
-    # If client user, generate verification token and send email
     if user.role == UserRole.client:
         token = generate_token()
         expiry = datetime.utcnow() + timedelta(hours=1)
         db_token = EmailVerificationToken(user_id=new_user.id, token=token, expiry=expiry)
         db.add(db_token)
         db.commit()
-        # Build verification URL
         base_url = BASE_URL or str(request.base_url).rstrip("/")
         verify_url = f"{base_url}/auth/verify-email?token={token}"
         send_email(

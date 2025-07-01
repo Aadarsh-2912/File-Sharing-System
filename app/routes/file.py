@@ -22,7 +22,6 @@ def upload_file(
     ext = filename.split(".")[-1].lower()
     if ext not in ALLOWED_EXTENSIONS:
         raise HTTPException(status_code=400, detail="File type not allowed. Only pptx, docx, xlsx are permitted.")
-    # Upload to S3
     uploaded_file.file.seek(0)
     success = upload_file_to_s3(uploaded_file.file, filename, uploaded_file.content_type)
     if not success:

@@ -20,19 +20,12 @@ A FastAPI-based file sharing system with user authentication, email verification
 Create a `.env` file in the root directory with the following variables:
 
 ```
-# Database (default is SQLite)
 DATABASE_URL=sqlite:///./test.db
-
-# JWT Secret
 SECRET_KEY=your-secret-key
-
-# S3 Storage
 AWS_ACCESS_KEY_ID=your-access-key
 AWS_SECRET_ACCESS_KEY=your-secret-access-key
 AWS_S3_BUCKET_NAME=your-bucket-name
 AWS_S3_REGION=your-region
-
-# (Optional) Base URL for email verification links
 BASE_URL=https://file-sharing-system-gvyz.onrender.com
 ```
 
@@ -138,9 +131,9 @@ The API will be available at [https://file-sharing-system-gvyz.onrender.com](htt
       - Copy the verification link from the server console output.
       - Paste it in your browser or use a GET request in Postman.
    3. **Login** both users to get their `access_token`.
-   4. **Upload a file** as the `ops` user (POST `/files/upload`, add file in form-data, set Authorization header).
+   4. **Upload** a file as the `ops` user (POST `/files/upload`, add file in form-data, set Authorization header).
    5. **List files** as the `client` user (GET `/files/list`, set Authorization header).
-   6. **Download a file** as the `client` user (GET `/files/download/{file_id}`, set Authorization header).
+   6. **Download** a file as the `client` user (GET `/files/download/{file_id}`, set Authorization header).
 
 4. **Authorization:**
    - For protected endpoints, add a header:

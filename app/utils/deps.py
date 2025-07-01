@@ -34,10 +34,12 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
 
 def require_ops_user(current_user: User = Depends(get_current_user)):
     if current_user.role != UserRole.ops:
-        raise HTTPException(status_code=403, detail="Only ops users can perform this action.")
+        raise HTTPException(status_code=403, detail="Only ops users allowed")
     return current_user
 
 def require_client_user(current_user: User = Depends(get_current_user)):
     if current_user.role != UserRole.client:
-        raise HTTPException(status_code=403, detail="Only client users can perform this action.")
+        raise HTTPException(status_code=403, detail="Only client users allowed")
+    if not current_user.is_verified:
+        raise HTTPException(status_code=403, detail="Email not verified")
     return current_user 
